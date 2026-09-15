@@ -1,0 +1,23 @@
+%{
+#include <stdio.h>
+%}
+//Rutva Sawarkar 24070521189
+
+%%
+[a-z]    { printf("%c", yytext[0] - 'a' + 'A'); }
+[A-Z]    { printf("%c", yytext[0] - 'A' + 'a'); }
+\n       { printf("\n"); }
+.        { printf("%s", yytext); }
+%%
+
+int yywrap()
+{
+    return 1;
+}
+
+int main()
+{
+    printf("Enter a string: ");
+    yylex();
+    return 0;
+}
